@@ -1,10 +1,11 @@
 import './main.css'
 function Main(props){
+    const {name,surname,namber}=props
     return(
         <div className={"main"}>
             <p>
-             Я {props.name} {props.surname}<br/>
-             Мені {props.namber}
+             Я {name} {surname}<br/>
+             Мені {namber}
             </p>
         </div>
     )

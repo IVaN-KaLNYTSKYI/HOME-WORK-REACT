@@ -3,30 +3,14 @@ import './App.css';
 import User from "./components/User/User";
 import {useState} from 'react';
 import Increment from "./components/Increment/Increment";
+import Main from "./components/Main/Main";
 
 
 function App() {
-    let [users, setUsers] = useState(user)
-    users.sort((a, d) => a.age > d.age);
-    const removeUser = () => {
-        users.pop();
-        setUsers([...users]);
-    }
-    const del=(id)=>{
-        setUsers(users.filter((item)=>item.id!==id))
-    }
+
     return (
         <div className="App">
-            {
-                users.map((value, index) =>
-                    <User key={index}
-                          {...value}
-                        del={del}
-                    />)
-
-
-            }
-            <button onClick={removeUser}>delete</button>
+            <Main/>
             <br/>
             <Increment/>
         </div>

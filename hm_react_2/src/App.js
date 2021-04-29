@@ -12,12 +12,16 @@ function App() {
         users.pop();
         setUsers([...users]);
     }
+    const del=(id)=>{
+        setUsers(users.filter((item)=>item.id!==id))
+    }
     return (
         <div className="App">
             {
                 users.map((value, index) =>
                     <User key={index}
                           {...value}
+                        del={del}
                     />)
 
 

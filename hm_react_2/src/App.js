@@ -1,25 +1,32 @@
-import logo from './logo.svg';
+import {user} from "./UserDb/UserDb";
 import './App.css';
+import User from "./components/User/User";
+import {useState} from 'react';
+import Increment from "./components/Increment/Increment";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    let [users, setUsers] = useState(user)
+    users.sort((a, d) => a.age > d.age);
+    const removeUser = () => {
+        users.pop();
+        setUsers([...users]);
+    }
+    return (
+        <div className="App">
+            {
+                users.map((value, index) =>
+                    <User key={index}
+                          {...value}
+                    />)
+
+
+            }
+            <button onClick={removeUser}>delete</button>
+            <br/>
+            <Increment/>
+        </div>
+    );
 }
 
 export default App;

@@ -6,25 +6,35 @@ let [text,setText]=useState("");
 let [arr,setArr]=useState([]);
 const add=(e)=>{
     e.preventDefault();
-   let newItem={
+setArr(arr.concat({
     text:text,
     id:Date.now()
-}
-setArr(arr.concat(newItem))
+}))
     console.log(arr)
 }
 const change=(e)=>{
     text=e.target.value
     setText(text)
 }
+const del=(id,e)=>{
+    setArr(arr.filter((value => value.id!==id)))
+}
     return(
         <div>
-            <Header arr={arr}/>
-          <form onSubmit={add}>
+            {
+                    arr.map((item,index )=>
+                        <Header
+                        key={index}
+                            {...item}
+                            del={del}
+                        />
+                    )
+            }
+          <form >
               <input
                   onChange={change}
               />
-             <button>Add</button>
+             <button onClick={add}>Add</button>
           </form>
         </div>
     )

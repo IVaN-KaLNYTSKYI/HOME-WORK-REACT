@@ -1,12 +1,10 @@
 import './Header.css'
 function Header(props){
+    const{text,id,del}=props
     return(
     <div>
-                {
-                    props.arr.map((item,index )=>
-                    <p key={index}>{item.text}</p>
-                )
-                }
+        {text}
+        <button onClick={()=>del(id)}>del</button>
     </div>
     )
 }

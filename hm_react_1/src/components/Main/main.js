@@ -7,7 +7,7 @@ let [arr,setArr]=useState([]);
 const add=(e)=>{
     e.preventDefault();
    let newItem={
-    comentari:text,
+    text:text,
     id:Date.now()
 }
 setArr(arr.concat(newItem))

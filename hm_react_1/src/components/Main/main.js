@@ -1,23 +1,24 @@
 import './main.css'
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 import Header from "../Header/header";
 function Main(){
 let [text,setText]=useState("");
-let [arr,setArr]=useState([]);
+let [arr,setArr]=useState(JSON.parse(localStorage.getItem("arr"))||[]);
+useEffect(()=>{
+    localStorage.setItem("arr",JSON.stringify(arr))
+})
 const add=(e)=>{
     e.preventDefault();
-setArr(arr.concat({
-    text:text,
-    id:Date.now()
-}))
+    setArr([...arr,{text}])
+    setText("")
     console.log(arr)
 }
 const change=(e)=>{
     text=e.target.value
     setText(text)
 }
-const del=(id,e)=>{
-    setArr(arr.filter((value => value.id!==id)))
+const del=(text)=>{
+    setArr(arr.filter((value => value.text!==text)))
 }
     return(
         <div>

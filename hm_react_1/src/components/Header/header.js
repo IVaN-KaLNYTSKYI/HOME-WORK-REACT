@@ -1,10 +1,11 @@
 import './Header.css'
 function Header(props){
-    const{text,id,del}=props
+    const{text,del}=props
     return(
     <div>
         {text}
-        <button onClick={()=>del(id)}>del</button>
+        <button onClick={()=>del(text)}>del</button>
+       {/* <button onClick={()=>del(text)}>del</button>*/}
     </div>
     )
 }

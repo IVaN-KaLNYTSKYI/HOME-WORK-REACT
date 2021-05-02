@@ -1,7 +1,8 @@
 *{
     margin: 0;
 }
-.header{
+.text{
     text-align: center;
     background: silver;
+    margin: 5px;
 }

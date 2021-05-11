@@ -1,10 +1,5 @@
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    withRouter,
-    Redirect
+    Link
 } from 'react-router-dom';
 
 export default function Inventor(props) {

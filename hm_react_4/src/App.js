@@ -5,9 +5,7 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link,
-    withRouter,
-    Redirect
+    Link
 } from 'react-router-dom';
 import InventorDetails from "./components/InventorDitails/InventorDitails";
 
@@ -26,7 +24,7 @@ function App() {
                         console.log(url)
                         return <Inventorys url={url}/>
                     }}/>
-                    <Route  path={'/inventorys/:id'} render={(props)=>{
+                    <Route path={'/inventorys/:id'} render={(props)=>{
                         console.log(props)
                         return <InventorDetails item={props}/>
                     }}/>

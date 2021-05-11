@@ -15,7 +15,7 @@ export default function Inventor(props) {
             {title}-
             <Link to={url + '/' + id}>user {id} details</Link>
             <Switch>
-                <Route exact={true} path={'/inventorys/:id'} render={(props) => {
+                <Route exact path={'/inventorys/:id'} render={(props) => {
                     console.log(props)
                     return <InventorDetails/>
                 }}/>

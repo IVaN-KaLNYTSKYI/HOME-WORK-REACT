@@ -12,6 +12,7 @@ const getUser = () => {
 const getInventor = () => {
     return axiosInstance.get('/inventory'); // promise
 };
+
 export  {
     getUser,getInventor
 };

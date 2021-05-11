@@ -23,11 +23,12 @@ function App() {
                         return <Characters/>
                     }}/>
                     <Route exact={true} path={'/inventorys'} render={({match: {url}})=>{
+                        console.log(url)
                         return <Inventorys url={url}/>
                     }}/>
-                    {/*<Route exact={true} path={'/inventorys/:id'} render={(props)=>{
+                   {/* <Route exact={true} path={'/inventorys/:id'} render={(props)=>{
                         console.log(props)
-                        return <InventorDetails/>
+                        return <InventorDetails item={props}/>
                     }}/>*/}
                 </Switch>
             </div>

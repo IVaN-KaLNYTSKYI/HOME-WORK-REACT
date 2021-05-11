@@ -1,8 +1,9 @@
 
-export default function InventorDetails(){
+export default function InventorDetails({item}){
+    console.log(item.match.params);
     return(
         <div>
-            yes
+           eref
         </div>
     )
 }

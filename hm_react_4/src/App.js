@@ -26,10 +26,10 @@ function App() {
                         console.log(url)
                         return <Inventorys url={url}/>
                     }}/>
-                   {/* <Route exact={true} path={'/inventorys/:id'} render={(props)=>{
+                    <Route  path={'/inventorys/:id'} render={(props)=>{
                         console.log(props)
                         return <InventorDetails item={props}/>
-                    }}/>*/}
+                    }}/>
                 </Switch>
             </div>
         </Router>

@@ -1,9 +1,18 @@
-
+import {useEffect, useState} from 'react';
+import {getInventorItem} from "../../services/api.futurama";
 export default function InventorDetails({item}){
-    console.log(item.match.params);
+    let [user, setUser] = useState(null);
+    useEffect(()=>{
+        getInventorItem(item.match.params.id).then(value => setUser({...value}))
+    })
+    const {title}=user
     return(
         <div>
-           eref
+            {
+                user&&<div>
+                    {title}
+                </div>
+            }
         </div>
     )
 }

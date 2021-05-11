@@ -12,7 +12,10 @@ const getUser = () => {
 const getInventor = () => {
     return axiosInstance.get('/inventory'); // promise
 };
+const getInventorItem = (id) => {
+    return axiosInstance.get('/inventory/' + id); // promise
+};
 
 export  {
-    getUser,getInventor
+    getUser,getInventor,getInventorItem
 };

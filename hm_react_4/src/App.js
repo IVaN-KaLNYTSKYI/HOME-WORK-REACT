@@ -1,25 +1,38 @@
-import logo from './logo.svg';
 import './App.css';
+import Characters from "./components/Characters/Characters";
+import Inventorys from "./components/Inventorys/Inventorys";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    withRouter,
+    Redirect
+} from 'react-router-dom';
+import InventorDetails from "./components/InventorDitails/InventorDitails";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <div>
+                <div><Link to={'/characters'}>Characters</Link></div>
+                <div><Link to={'/inventorys'}>Inventorys</Link></div>
+                <Switch>
+                    <Route exact={true} path={'/characters'} render={()=>{
+                        return <Characters/>
+                    }}/>
+                    <Route exact={true} path={'/inventorys'} render={({match: {url}})=>{
+                        return <Inventorys url={url}/>
+                    }}/>
+                    {/*<Route exact={true} path={'/inventorys/:id'} render={(props)=>{
+                        console.log(props)
+                        return <InventorDetails/>
+                    }}/>*/}
+                </Switch>
+            </div>
+        </Router>
+    );
 }
 
 export default App;

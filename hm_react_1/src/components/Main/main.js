@@ -10,6 +10,7 @@ function Main() {
     useEffect(() => {
         localStorage.setItem("arr", JSON.stringify(arr))
     })
+
     const add = (e) => {
         e.preventDefault();
         setArr([...arr, {text, textNotes, id: Date.now()}])
@@ -28,7 +29,7 @@ function Main() {
         setArr(arr.filter((value => value.id !== id)))
     }
     const update = (id) => {
-       /* setArr(arr.filter((value => value.id !== id)))*/
+        /* setArr(arr.filter((value => value.id !== id)))*/
     }
     const search = arr.filter((value => value.text.toLowerCase().includes(textSearch.toLowerCase())));
 

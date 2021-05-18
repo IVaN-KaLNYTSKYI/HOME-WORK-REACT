@@ -9,6 +9,7 @@ export default function UserDetails ({id}) {
   return(
       <div>
           {JSON.stringify(users)}
+
       </div>
   )
 }

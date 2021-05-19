@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import Counter from "./components/Counter/Counter";
 import {Link, BrowserRouter as Router, Switch, Route} from "react-router-dom";

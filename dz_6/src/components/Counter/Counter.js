@@ -1,32 +1,54 @@
 import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
+import {useError, useIsLoading, usePost, useResetLoading} from "../../redux";
+
 
 export default function Counter() {
-    const counter = useSelector((state) => state.counter)
+    const {isLoading, post, error} = useSelector(({post}) =>post)
+
+    const postFetch = usePost()
+    const postIsLoading = useIsLoading()
+    const postResetLoading = useResetLoading()
+    const postError = useError()
+
     const dispatch = useDispatch()
-    const increment = () => {
-        dispatch({type: "INC"})
+    const fetchPost = async () => {
+        try {
+            postIsLoading()
+
+            const response = await fetch("https://jsonplaceholder.typicode.com/posts")
+            const date = await response.json()
+
+            postFetch(date)
+            console.log(date)
+        } catch (e) {
+            console.log(e, "retro")
+
+            postResetLoading()
+            postError("error")
+        }
     }
-    const incrementSto = () => {
-        dispatch({type: "INC_STO"})
+    console.log(post)
+    useEffect(() => {
+        fetchPost()
+    }, [])
+    if (isLoading) {
+        return (
+            <div>Loading!!!!</div>
+        )
     }
-    const decrement = () => {
-        dispatch({type: "DEC"})
+    if (error) {
+        return (
+            <div>{error}</div>
+        )
     }
-    const decrementSto = () => {
-        dispatch({type: "DEC_STO"})
-    }
-    const reset = () => {
-        dispatch({type: "RESET"})
-    }
-    console.log(counter)
     return (
         <div>
-            <h1>Counter: {counter}</h1>
-            <button onClick={increment}>inc</button>
-            <button onClick={decrement}>dec</button>
-            <button onClick={decrementSto}>dec(-100)</button>
-            <button onClick={incrementSto}>inc(+100)</button>
-            <button onClick={reset}>reset</button>
+            {
+                post.map((post) => {
+                    return <p key={post.id}>{post.title}</p>
+                })
+            }
         </div>
     )
 }

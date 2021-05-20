@@ -1,9 +1,9 @@
 import {
-     SET_COMMENTS_ERROR, SET_COMMENTS_IS_LOADING, SET_COMMENTS,RESET_COMMENTS_IS_LOADING
+    SET_COMMENTS_ERROR, SET_COMMENTS_IS_LOADING, SET_COMMENTS, RESET_COMMENTS_IS_LOADING, SET_POST_ID
 } from "../actionTypes/index";
 
 const initialState = {
-    comment: [], isLoading: false, error: null
+    comment: [], isLoading: false, error: null,comments_id:{}
 }
 
 export const comments = (state = initialState, action) => {
@@ -28,6 +28,11 @@ export const comments = (state = initialState, action) => {
         case SET_COMMENTS_ERROR: {
             return {
                 ...state, error: action.payload
+            }
+        }
+        case SET_POST_ID:{
+            return {
+                ...state,comments_id: action.payload
             }
         }
         default:
